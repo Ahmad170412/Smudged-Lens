@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smudged-lens"
+version = "0.1.0"
+description = "Active defense for your machine — makes your device look like something it is not to network scanners"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [
+    {name = "Smudged Lens Contributors"},
+]
+keywords = ["security", "active-defense", "nmap", "port-spoofing", "os-fingerprint"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: System :: Networking",
+]
+dependencies = [
+    "flask>=3.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Ahmad170412/Smudged-Lens"
+Repository = "https://github.com/Ahmad170412/Smudged-Lens"
+Issues = "https://github.com/Ahmad170412/Smudged-Lens/issues"
+
+[project.scripts]
+smudged-lens = "smudged_lens.cli:main"
+smudged-lens-app = "smudged_lens.app:main"
+
+[tool.setuptools]
+packages = ["smudged_lens"]
+
+[tool.setuptools.package-data]
+smudged_lens = ["templates/*.html", "static/*.css", "static/*.js"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests.py"]

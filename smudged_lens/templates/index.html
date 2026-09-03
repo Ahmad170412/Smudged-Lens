@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233e7bff' stroke-width='1.8'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 3a9 9 0 0 1 0 18'/%3E%3Cpath d='M12 7.5a4.5 4.5 0 0 1 0 9'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 3a9 9 0 0 1 0 18"/>
+      <path d="M12 7.5a4.5 4.5 0 0 1 0 9"/>
+    </svg>
+    <h1>Smudged Lens</h1>
+  </div>
+  <div id="statusBadge" class="badge">
+    <span class="dot"></span>
+    <span id="statusText">Connecting</span>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Control -->
+  <section class="hero reveal" style="--i:0">
+    <button id="powerBtn" class="power" aria-label="Toggle defense">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <path d="M18.36 6.64a9 9 0 1 1-12.73 0"/>
+        <line x1="12" y1="2" x2="12" y2="12"/>
+      </svg>
+    </button>
+    <p id="powerLabel" class="power-label">Defense is off</p>
+
+    <div id="osRow" class="os-row">
+      <span class="skeleton chip-skel"></span><span class="skeleton chip-skel"></span><span class="skeleton chip-skel"></span><span class="skeleton chip-skel"></span><span class="skeleton chip-skel"></span>
+    </div>
+
+    <div class="ports-control">
+      <span class="ports-label">Spoofed ports</span>
+      <input type="range" id="portCount" min="1" max="13" value="8">
+      <span id="portCountValue" class="ports-value">8</span>
+    </div>
+
+    <!-- Live preview of the concrete ports the selected OS profile will fake -->
+    <div id="portPreview" class="port-preview hidden" aria-live="polite"></div>
+
+    <div class="meta">
+      <span><b id="metaProbes">–</b> probes caught</span>
+      <span class="sep"></span>
+      <span><b id="metaBlocked">–</b> IPs blocked</span>
+      <span class="sep"></span>
+      <span>up <b id="metaUptime">–</b></span>
+    </div>
+  </section>
+
+  <!-- Log -->
+  <section class="card reveal" style="--i:1">
+    <div class="card-head">
+      <div class="card-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <h2>Captured Probes</h2>
+      </div>
+      <button class="btn ghost sm" id="clearLogBtn">Clear</button>
+    </div>
+
+    <div class="log-scroll">
+      <table class="log-table">
+        <thead>
+          <tr><th>Time</th><th>Source</th><th>Port</th><th>Service</th></tr>
+        </thead>
+        <tbody id="logBody">
+          <tr><td colspan="4" class="empty">Nothing yet — scanners will show up here.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<div id="toast" class="toast"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

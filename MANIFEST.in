@@ -1,0 +1,3 @@
+recursive-include smudged_lens/templates *.html
+recursive-include smudged_lens/static *.css *.js
+include LICENSE README.md requirements.txt
